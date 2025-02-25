@@ -1,0 +1,3 @@
+2025-02-25 23:46:32,369 - INFO - \u2705 Successfully loaded comments.csv with 7488 rows.
+2025-02-25 23:46:32,385 - WARNING - \U0001f6a8 Found 7488 invalid dates in 'posted date'. Replacing with NaT.
+2025-02-25 23:46:32,389 - INFO - \u2705 Data cleaned: 0 rows remaining.
