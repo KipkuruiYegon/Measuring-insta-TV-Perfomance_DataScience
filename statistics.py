@@ -56,3 +56,13 @@ plt.title("Monthly User Signups on IGTV")
 plt.xlabel("Month")
 plt.ylabel("Number of Signups")
 plt.show()
+
+#IGTV UserEngagement
+plt.figure(figsize=(12, 5))
+sns.histplot(likes_df['photo'], bins=50, kde=True, color='blue', label='Likes')
+sns.histplot(comments_df['Photo id'], bins=50, kde=True, color='red', label='Comments', alpha=0.6)
+plt.legend()
+plt.title("IGTV Engagement: Likes vs Comments")
+plt.xlabel("Post ID")
+plt.ylabel("Frequency")
+plt.show()
