@@ -27,3 +27,20 @@ for name, df in datasets.items():
     print(f"Dataset: {name}")
     display(df.head())
     print("\n")
+
+
+# Check for missing values
+for name, df in datasets.items():
+    print(f"{name} Missing Values:\n{df.isnull().sum()}\n")
+
+# Check for duplicates
+for name, df in datasets.items():
+    print(f"{name} Duplicates: {df.duplicated().sum()}\n")
+
+# Drop duplicates if any exist
+for name, df in datasets.items():
+    datasets[name] = df.drop_duplicates()
+
+# Fill missing values with appropriate defaults
+users_df.fillna({"bio": "No bio", "profile_picture": "default.jpg"}, inplace=True)
+comments_df.fillna({"text": "No comment"}, inplace=True)
