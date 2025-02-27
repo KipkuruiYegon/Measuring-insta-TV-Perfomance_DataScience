@@ -44,3 +44,15 @@ for name, df in datasets.items():
 # Fill missing values with appropriate defaults
 users_df.fillna({"bio": "No bio", "profile_picture": "default.jpg"}, inplace=True)
 comments_df.fillna({"text": "No comment"}, inplace=True)
+
+# Monthly User SignUps BarChart
+users_df['signup_date'] = pd.to_datetime(users_df['created time'])
+users_df['signup_month'] = users_df['signup_date'].dt.to_period('M')
+
+plt.figure(figsize=(12, 5))
+sns.countplot(x=users_df['signup_month'].astype(str), order=sorted(users_df['signup_month'].astype(str).unique()))
+plt.xticks(rotation=45)
+plt.title("Monthly User Signups on IGTV")
+plt.xlabel("Month")
+plt.ylabel("Number of Signups")
+plt.show()
