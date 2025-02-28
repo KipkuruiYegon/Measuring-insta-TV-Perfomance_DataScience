@@ -31,3 +31,34 @@ datasets = {
 for name, df in datasets.items():
     print(f"\n📊 Dataset: {name}")
     display(df.head())  # Use display() in Jupyter to render DataFrames properly
+
+
+# Standardize column names across datasets
+comments_df.rename(columns={'User id': 'user_id', 'Photo id': 'photo_id', 'created Timestamp': 'created_at'}, inplace=True)
+likes_df.rename(columns={'user': 'user_id', 'photo': 'photo_id', 'created time': 'created_at'}, inplace=True)
+users_df.rename(columns={'created time': 'created_at', 'private/public': 'account_status'}, inplace=True)
+follows_df.rename(columns={'follower': 'follower_id', 'followee': 'followee_id', 'created time': 'created_at'}, inplace=True)
+photo_tags_df.rename(columns={'user id': 'user_id'}, inplace=True)
+photos_df.rename(columns={'user ID': 'user_id', 'created dat': 'created_at'}, inplace=True)
+
+# Convert 'created_at' columns to datetime format (with dayfirst=True)
+date_columns = ['created_at']
+for df in [comments_df, follows_df, likes_df, photos_df, users_df]:
+    df[date_columns] = df[date_columns].apply(lambda x: pd.to_datetime(x, errors='coerce', dayfirst=True))
+
+print("\n✅ Date Parsing Completed without Warnings!")
+
+
+# Check for missing values
+for name, df in datasets.items():
+    print(f"\n🔍 {name} Missing Values:\n{df.isnull().sum()}")
+
+# Drop duplicates
+for name, df in datasets.items():
+    datasets[name] = df.drop_duplicates()
+
+# Fill missing values
+users_df.fillna({"account_status": "public", "post count": 0, "Verified status": "no"}, inplace=True)
+comments_df.fillna({"comment": "No comment"}, inplace=True)
+
+print("\n✅ Data Cleaning Completed!")
