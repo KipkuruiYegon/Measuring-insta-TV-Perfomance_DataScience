@@ -62,3 +62,16 @@ users_df.fillna({"account_status": "public", "post count": 0, "Verified status":
 comments_df.fillna({"comment": "No comment"}, inplace=True)
 
 print("\n✅ Data Cleaning Completed!")
+
+
+# Extract monthly signups
+users_df['signup_month'] = users_df['created_at'].dt.to_period('M')
+
+# Plot signups over time
+plt.figure(figsize=(12, 5))
+sns.countplot(x=users_df['signup_month'].astype(str), order=sorted(users_df['signup_month'].astype(str).unique()))
+plt.xticks(rotation=45)
+plt.title("Monthly User Signups on IGTV")
+plt.xlabel("Month")
+plt.ylabel("Number of Signups")
+plt.show()
