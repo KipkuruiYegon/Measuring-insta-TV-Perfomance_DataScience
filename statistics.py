@@ -96,3 +96,22 @@ plt.title("Distribution of Posts per User")
 plt.xlabel("Number of Posts")
 plt.ylabel("Frequency")
 plt.show()
+
+
+# Remove ALL extra spaces from column names
+likes_df.columns = likes_df.columns.str.strip()
+comments_df.columns = comments_df.columns.str.strip()
+
+# Replace multiple spaces with a single space in all column names
+comments_df.columns = comments_df.columns.str.replace(r'\s+', ' ', regex=True)
+
+# Now rename columns correctly
+likes_df.rename(columns={'user': 'user_id'}, inplace=True)
+comments_df.rename(columns={'User id': 'user_id'}, inplace=True)
+
+# Print updated columns to verify changes
+print("✅ Updated Likes DataFrame Columns:", likes_df.columns.tolist())
+print("✅ Updated Comments DataFrame Columns:", comments_df.columns.tolist())
+
+
+
