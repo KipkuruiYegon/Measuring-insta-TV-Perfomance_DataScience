@@ -85,3 +85,14 @@ plt.title("IGTV Engagement: Likes vs Comments")
 plt.xlabel("Post ID")
 plt.ylabel("Frequency")
 plt.show()
+
+
+# Count the number of posts per user
+user_post_counts = photos_df['user_id'].value_counts()
+
+plt.figure(figsize=(12, 5))
+sns.histplot(user_post_counts, bins=30, kde=True)
+plt.title("Distribution of Posts per User")
+plt.xlabel("Number of Posts")
+plt.ylabel("Frequency")
+plt.show()
