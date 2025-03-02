@@ -67,7 +67,7 @@ print("\nData Cleaning Completed!")
 # Extract monthly signups
 users_df['signup_month'] = users_df['created_at'].dt.to_period('M')
 
-# Plot signups over time
+# Plot signups over time (Graph)
 plt.figure(figsize=(12, 5))
 sns.countplot(x=users_df['signup_month'].astype(str), order=sorted(users_df['signup_month'].astype(str).unique()))
 plt.xticks(rotation=45)
