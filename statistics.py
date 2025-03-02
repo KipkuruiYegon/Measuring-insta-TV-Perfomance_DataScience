@@ -117,7 +117,7 @@ print(" Updated Comments DataFrame Columns:", comments_df.columns.tolist())
 top_users = likes_df['user_id'].value_counts().nlargest(10)
 top_users_comments = comments_df['user_id'].value_counts().nlargest(10)
 
-# Plot top 10 users by likes given
+# Plot top 10 users by likes given (graph)
 plt.figure(figsize=(12, 5))
 sns.barplot(x=top_users.index, y=top_users.values, hue=top_users.index, palette="Blues_d", legend=False)
 plt.title("Top 10 Users by Number of Likes Given")
@@ -125,7 +125,7 @@ plt.xlabel("User ID")
 plt.ylabel("Likes Given")
 plt.show()
 
-# Plot top 10 users by comments made
+# Plot top 10 users by comments made. (graph)
 plt.figure(figsize=(12, 5))
 sns.barplot(x=top_users_comments.index, y=top_users_comments.values, hue=top_users_comments.index, palette="Reds_d", legend=False)
 plt.title("Top 10 Users by Number of Comments Made")
