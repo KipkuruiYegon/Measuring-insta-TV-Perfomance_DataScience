@@ -87,7 +87,7 @@ plt.ylabel("Frequency")
 plt.show()
 
 
-# Count the number of posts per user
+# Count the number of posts per user (graph)
 user_post_counts = photos_df['user_id'].value_counts()
 
 plt.figure(figsize=(12, 5))
