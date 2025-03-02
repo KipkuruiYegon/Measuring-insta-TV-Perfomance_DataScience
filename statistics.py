@@ -30,7 +30,7 @@ datasets = {
 # Display the first few rows of each dataset
 for name, df in datasets.items():
     print(f"\n📊 Dataset: {name}")
-    display(df.head())  # Use display() in Jupyter to render DataFrames properly
+    display(df.read())  # Use display() in Jupyter to render DataFrames properly
 
 
 # Standardize column names across datasets
@@ -46,12 +46,12 @@ date_columns = ['created_at']
 for df in [comments_df, follows_df, likes_df, photos_df, users_df]:
     df[date_columns] = df[date_columns].apply(lambda x: pd.to_datetime(x, errors='coerce', dayfirst=True))
 
-print("\n✅ Date Parsing Completed without Warnings!")
+print("\n Date Parsing Completed without Warnings!")
 
 
 # Check for missing values
 for name, df in datasets.items():
-    print(f"\n🔍 {name} Missing Values:\n{df.isnull().sum()}")
+    print(f"\n{name} Missing Values:\n{df.isnull().sum()}")
 
 # Drop duplicates
 for name, df in datasets.items():
@@ -61,7 +61,7 @@ for name, df in datasets.items():
 users_df.fillna({"account_status": "public", "post count": 0, "Verified status": "no"}, inplace=True)
 comments_df.fillna({"comment": "No comment"}, inplace=True)
 
-print("\n✅ Data Cleaning Completed!")
+print("\nData Cleaning Completed!")
 
 
 # Extract monthly signups
