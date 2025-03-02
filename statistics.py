@@ -29,7 +29,7 @@ datasets = {
 
 # Display the first few rows of each dataset
 for name, df in datasets.items():
-    print(f"\n📊 Dataset: {name}")
+    print(f"\nDataset: {name}")
     display(df.read())  # Use display() in Jupyter to render DataFrames properly
 
 
@@ -110,8 +110,8 @@ likes_df.rename(columns={'user': 'user_id'}, inplace=True)
 comments_df.rename(columns={'User id': 'user_id'}, inplace=True)
 
 # Print updated columns to verify changes
-print("✅ Updated Likes DataFrame Columns:", likes_df.columns.tolist())
-print("✅ Updated Comments DataFrame Columns:", comments_df.columns.tolist())
+print(" Updated Likes DataFrame Columns:", likes_df.columns.tolist())
+print(" Updated Comments DataFrame Columns:", comments_df.columns.tolist())
 
 # Find top 10 users by likes given
 top_users = likes_df['user_id'].value_counts().nlargest(10)
